@@ -1,0 +1,31 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: Monty Boot Admin
+  boot:
+    admin:
+      client:
+        instance:
+          metadata:
+            user:
+              name: ${spring.security.user.name}
+              password: ${spring.security.user.password}
+          prefer-ip: true
+        password: admin
+        url: http://localhost:8093
+        username: admin
+  security:
+    user:
+      name: admin
+      password: admin
+
+management:
+    endpoint:
+        health:
+            show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: '*'
