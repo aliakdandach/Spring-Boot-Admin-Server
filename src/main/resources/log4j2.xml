@@ -14,7 +14,7 @@
 
         <!-- Rolling Files Appender -->
         <RollingFile name="FILE_APPENDER" fileName="../logs/spring-boot-admin.log"
-                     filePattern="../logs/spring-boot-admin-${ROLLING_DATE_PATTERN}.log.zip" append="true">
+                     filePattern="/logs/spring-boot-admin-${ROLLING_DATE_PATTERN}.log.zip" append="true">
             <PatternLayout pattern="${CONSOLE_PATTERN}"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
@@ -24,7 +24,7 @@
 
         <!--Application Error File Appender-->
         <RollingFile name="FILE_APPENDER_ERROR" fileName="../logs/spring-boot-admin-error.log"
-                     filePattern="../logs/spring-boot-admin-error-${ROLLING_DATE_PATTERN}.log.zip" append="true">
+                     filePattern="/logs/spring-boot-admin-error-${ROLLING_DATE_PATTERN}.log.zip" append="true">
             <PatternLayout pattern="${CONSOLE_PATTERN}"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>

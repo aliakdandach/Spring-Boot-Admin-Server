@@ -1,4 +1,4 @@
-package com.monty;
+package org.example;
 
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
