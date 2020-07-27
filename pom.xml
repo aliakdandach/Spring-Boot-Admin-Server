@@ -19,10 +19,14 @@
 
     <properties>
         <!--project configuration-->
-        <java.version>14</java.version>
+        <java.version>11</java.version>
+
+        <!--depedencies-->
+        <spring-boot-admin-server-ui.version>2.2.4</spring-boot-admin-server-ui.version>
 
         <!--dependency management-->
         <spring-boot-admin.version>2.2.3</spring-boot-admin.version>
+        <spring-cloud-plugin.version>Hoxton.SR6</spring-cloud-plugin.version>
     </properties>
 
 
@@ -66,14 +70,21 @@
         <!--spring boot admin server ui-->
         <dependency>
             <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-server-ui-login</artifactId>
-            <version>1.5.7</version>
+            <artifactId>spring-boot-admin-server-ui</artifactId>
+            <version>${spring-boot-admin-server-ui.version}</version>
         </dependency>
+
 
         <!--spring boot admin client-->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
+        </dependency>
+
+        <!--spring boot cloud service discovery-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
         </dependency>
 
         <!--hazelcast-->
@@ -87,11 +98,24 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
+        <!--caffeine cache-->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
     </dependencies>
 
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-plugin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-dependencies</artifactId>

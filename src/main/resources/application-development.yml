@@ -1,5 +1,9 @@
 server:
   port: 8081
+  ssl:
+    keystore: src/main/resources/springbootadminserver.jks
+    key-store-password: spring@123
+    enabled: true
 
 spring:
   application:
@@ -13,13 +17,32 @@ spring:
               name: ${spring.security.user.name}
               password: ${spring.security.user.password}
           prefer-ip: true
-        url: http://localhost:8081
+        url: https://localhost:8081
         username: admin
         password: admin
   security:
     user:
       name: admin
       password: admin
+  cloud:
+    consul:
+      discovery:
+        instance-id: ${spring.application.name}:${spring.cloud.consul.host}
+        prefer-ip-address: true
+        tags: version=1.0
+        healthCheckPath: /actuator/health
+        healthCheckInterval: 10s
+        healthCheckTimeout: 60s
+        healthCheckCriticalTimeout: 5m
+      retry:
+        enabled: true
+        max-attempts: 100
+        max-interval: 1000
+      enabled: false
+      host: 127.0.0.1
+    loadbalancer:
+      ribbon:
+        enabled: false
 
 management:
   endpoint:
